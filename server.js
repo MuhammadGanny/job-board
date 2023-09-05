@@ -4,7 +4,7 @@ const userRoutes = require("./routes/userRoutes");
 const jobPostRoutes = require("./routes/jobPostRoutes");
 
 const app = express();
-const mongoURI = "mongodb+srv://jobboard:test123@cluster0.o2o8svn.mongodb.net/"
+const mongoURI = "mongodb+srv://mohammadganny:test123@cluster0.nqzaqxd.mongodb.net/?retryWrites=true&w=majority"
 // Connect to MongoDB
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB"))
