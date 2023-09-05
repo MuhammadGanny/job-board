@@ -8,3 +8,4 @@ router.post("/register",UserController.register)
 
 router.post("/login", UserController.login);
 // Define routes for user actions (registration, login, etc.)
+module.exports = router;
