@@ -6,6 +6,8 @@ const user = require("./models/User")
 
 const app = express();
 const mongoURI = "mongodb+srv://test:testing123@cluster0.nqzaqxd.mongodb.net/?retryWrites=true&w=majority"
+
+app.use(express.json());
 // Connect to MongoDB
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB"))
