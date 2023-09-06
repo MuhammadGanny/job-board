@@ -31,7 +31,7 @@ exports.register = async (req, res) => {
       const user = await User.findOne({ username });
   
       // If the user doesn't exist, return an error
-      if (!user) {
+      if (username !== user.username) {
         return res.status(401).json({ error: "Invalid username or password" });
       }
   
