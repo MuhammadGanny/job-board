@@ -1,10 +1,6 @@
 // UserController.js
 const User = require("../models/User");
 // const bcrypt = require("bcrypt");
-const config = require('./config'); // Adjust the path as needed
-const jwt = require("jsonwebtoken");
-// Access the secretKey
-const secretKey = config.secretKey;
 
 
 
@@ -42,10 +38,8 @@ exports.register = async (req, res) => {
   
       // Compare the provided password with the password stored in the database
       if (password === user.password) {
+
         
-        const token = jwt.sign({ userId: user._id }, "your-secret-key", {
-          expiresIn: "1h", // Set the token to expire in 1 hour
-        });
         // You can create a token here for user authentication (e.g., using JWT)
         // Return the token to the client
         // Example:
