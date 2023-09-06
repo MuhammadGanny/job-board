@@ -20,10 +20,10 @@ exports.createJobPost = async (req, res) => {
     } catch (error) {
       res.status(500).json({ error: "Error creating job post" });
     }
-  };
+};
   
   // Edit an existing job post
-  exports.editJobPost = async (req, res) => {
+exports.editJobPost = async (req, res) => {
     try {
       const { id } = req.params; // Job post ID
       const { jobTitle, description, location, deadline } = req.body;
@@ -40,10 +40,10 @@ exports.createJobPost = async (req, res) => {
     } catch (error) {
       res.status(500).json({ error: "Error editing job post" });
     }
-  };
+};
   
   // Delete a job post
-  exports.deleteJobPost = async (req, res) => {
+exports.deleteJobPost = async (req, res) => {
     try {
       const { id } = req.params; // Job post ID
   
@@ -54,6 +54,17 @@ exports.createJobPost = async (req, res) => {
     } catch (error) {
       res.status(500).json({ error: "Error deleting job post" });
     }
-  };
+};
+exports.getJobPosts = async (req, res) => {
+  try {
+    // Fetch all job posts from the database
+    const jobPosts = await JobPost.find();
+
+    // Send the job posts as a JSON response
+    res.status(200).json(jobPosts);
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching job posts" });
+  }
+};
 
 // Implement job post creation, editing, deletion, etc.

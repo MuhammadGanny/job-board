@@ -14,6 +14,7 @@ router.put("/:id", JobPostController.editJobPost);
 // Route to delete a job post by ID
 router.delete("/:id", JobPostController.deleteJobPost);
 
+router.get("/", JobPostController.getJobPosts);
 module.exports = router;
 
 // Define routes for job post actions (create, edit, delete, etc.)
