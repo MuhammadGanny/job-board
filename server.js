@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
 const jobPostRoutes = require("./routes/jobPostRoutes");
 const user = require("./models/User")
-
+const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 const mongoURI = "mongodb+srv://test:testing123@cluster0.nqzaqxd.mongodb.net/?retryWrites=true&w=majority"
 
@@ -17,6 +17,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/jobPosts", jobPostRoutes);
+app.use('/admin', adminRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

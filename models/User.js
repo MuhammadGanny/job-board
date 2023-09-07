@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   username: { type: String, unique: true },
   email: String,
-  password: String, // Hashed password will be stored
+  password: String,
+  isAdmin: { type: Boolean, default: false },
   // Other user fields
 });
 
