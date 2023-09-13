@@ -8,6 +8,7 @@ exports.registerAdmin = async (req, res) => {
     await admin.save();
     res.status(201).json({ message: "Admin registered successfully" });
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: "Error registering admin" });
   }
 };
