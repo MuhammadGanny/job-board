@@ -1,6 +1,42 @@
 // AdminController.js
 const User = require('../models/User');
 
+exports.registerAdmin = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const admin = new Admin({ username, password });
+    await admin.save();
+    res.status(201).json({ message: "Admin registered successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Error registering admin" });
+  }
+};
+exports.loginAdmin = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const admin = await Admin.findOne({ username });
+
+    if (!admin) {
+      return res.status(401).json({ error: "Invalid username or password" });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, admin.password);
+
+    if (isPasswordValid) {
+      // Generate a token here for admin authentication (e.g., using JWT)
+      // Return the token to the client
+      // Example:
+      // const token = createToken(admin);
+
+      res.status(200).json({ message: "Admin logged in successfully", token });
+    } else {
+      res.status(401).json({ error: "Invalid username or password" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Error logging in admin" });
+  }
+};
+
 exports.suspendUser = async (req, res) => {
   try {
     const userId = req.params.userId;
