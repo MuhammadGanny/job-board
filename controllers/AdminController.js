@@ -1,5 +1,7 @@
 // AdminController.js
 const User = require('../models/User');
+const Admin = require("../models/Admin"); // Adjust the path as needed
+
 
 exports.registerAdmin = async (req, res) => {
   try {
